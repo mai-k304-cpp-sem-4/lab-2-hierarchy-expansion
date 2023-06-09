@@ -31,8 +31,8 @@ private:
 public:
 	VGlass(int initX = 10, int initY = 10, int initHeight = 60, int initWidth = 60);
 	~VGlass();
-	void show();
-	void hide();
+	virtual void show();
+	virtual void hide();
 	void moveTo(int newX, int newY);
 	void drug(const int& shift);
 	void expand(int deltaHeight, int deltaWidth);
