@@ -21,7 +21,7 @@ public:
 	virtual void hide();
 	bool isVisible();
 	void moveTo(int newX, int newY);
-	void drug(const int& shift);
+	void drug(int shift);
 };
 
 class VGlass : public VPoint {
@@ -33,10 +33,6 @@ public:
 	~VGlass();
 	virtual void show();
 	virtual void hide();
-	void moveTo(int newX, int newY);
-	void drug(const int& shift);
-	void expand(int deltaHeight, int deltaWidth);
-	void reduce(int deltaHeight, int deltaWidth);
 };
 
 #pragma once

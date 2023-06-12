@@ -43,7 +43,7 @@ void VPoint::moveTo(int newX, int newY) {
 	show();
 };
 
-void VPoint::drug(const int& shift) {
+void VPoint::drug(int shift) {
 	if (KEY_DOWN(VK_DOWN))
 		moveTo(x, y + shift);
 	if (KEY_DOWN(VK_UP))
@@ -69,35 +69,4 @@ void VGlass::show(void) {
 void VGlass::hide(void) {
 	visible = false;
 	Image::glassHide(hdc, x, y);
-}
-
-void VGlass::moveTo(int newX, int newY) {
-	hide();
-	x = newX;
-	y = newY;
-	show();
-}
-
-void VGlass::drug(const int& shift) {
-	if (KEY_DOWN(VK_DOWN))
-		moveTo(x, y + shift);
-	if (KEY_DOWN(VK_UP))
-		moveTo(x, y - shift);
-	if (KEY_DOWN(VK_RIGHT))
-		moveTo(x + shift, y);
-	if (KEY_DOWN(VK_LEFT))
-		moveTo(x - shift, y);
-}
-
-void VGlass::expand(int deltaHeight, int deltaWidth) {
-	hide();
-	height += deltaHeight;
-	width += deltaWidth;
-	if (deltaHeight < 0) height = 5;
-	if (deltaWidth < 0) width = 5;
-	show();
-}
-
-void VGlass::reduce(int deltaHeight, int deltaWidth) {
-	expand(-deltaHeight, -deltaWidth);
 }

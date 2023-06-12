@@ -11,10 +11,8 @@ HDC hdc;
 void main() {
 	setlocale(LC_ALL, "ru");
 	cout << "Введите размер шага: ";
-	int shift;
+	int shift = 10;
 	cin >> shift;
-	int deltaHeight = 60;
-	int deltaWidth = 60;
 	cout << "Для выхода нажмите на 1";
 	int x0 = 130, y0 = 250; // Начальные координаты
 	HWND hwnd = GetConcolWindow();
@@ -22,7 +20,6 @@ void main() {
 		hdc = GetWindowDC(hwnd);
 		if (hdc != 0) {
 			VGlass BGlass(x0, y0);
-			BGlass.expand(deltaHeight, deltaWidth);
 			BGlass.show();
 			while (!KEY_DOWN(49)) {
 				BGlass.drug(shift);
