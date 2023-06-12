@@ -11,32 +11,57 @@ public:
 	int getY();
 };
 
-class VPoint : public Location {
+class Point : public Location {
 protected:
 	bool visible;
 public:
-	VPoint(int initX, int initY);
-	~VPoint();
+	Point(int initX = 0, int initY = 0);
+	~Point();
 	virtual void show();
 	virtual void hide();
 	bool isVisible();
 	void moveTo(int newX, int newY);
-	void drug(const int& shift);
+	void drug(int shift);
 };
 
-class VGlass : public VPoint {
-private:
+class Figure : public Point {
+protected:
 	int height;
 	int width;
 public:
-	VGlass(int initX = 10, int initY = 10, int initHeight = 60, int initWidth = 60);
-	~VGlass();
-	void show();
-	void hide();
-	void moveTo(int newX, int newY);
-	void drug(const int& shift);
-	void expand(int deltaHeight, int deltaWidth);
-	void reduce(int deltaHeight, int deltaWidth);
+	Figure(int initX = 0, int initY = 0, int initHeight = 0, int initWidth = 0);
+	~Figure();
+	virtual void show() = 0;
+	virtual void hide() = 0;
+	int getHeight();
+	int getWidth();
+	bool onTriggerEnter(Figure* enterFigure);
+};
+
+class Glass : public Figure {
+private:
+	int** wallMatrix;
+public:
+	Glass(int initX = 0, int initY = 0, int initHeight = 60, int initWidth = 60);
+	~Glass();
+	virtual void show();
+	virtual void hide();
+};
+
+class Drop : public Figure {
+public:
+	Drop(int initX = 0, int initY = 0, int initHeight = 40, int initWidth = 40);
+	~Drop();
+	virtual void show();
+	virtual void hide();
+};
+
+class Wall : public Figure {
+public:
+	Wall(int initX = 0, int initY = 0, int initHeight = 100, int initWidth = 100);
+	~Wall();
+	virtual void show();
+	virtual void hide();
 };
 
 #pragma once
